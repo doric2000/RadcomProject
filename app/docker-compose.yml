@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  # 1. The Broker (Redis) - מנהל את התור. זה הסוד לעמידה בעומסים.
+  redis:
+    image: redis:alpine
+    container_name: radcom_redis
+    ports:
+      - "6379:6379"
+
+  # 2. The Brain (FastAPI) - מקבל בקשות ושולח לתור.
+  backend:
+    build: .
+    container_name: radcom_backend
+    command: uvicorn api:app --host 0.0.0.0 --port 8000
+    volumes:
+      - .:/app
+      - ../models:/models
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+
+  # 3. The Muscle (Celery Worker) - עושה את העבודה הכבדה ברקע.
+  worker:
+    build: .
+    container_name: radcom_worker
+    # מריץ את ה-Worker עם רמת Log של Info
+    command: celery -A worker.celery_app worker --loglevel=info
+    volumes:
+      - .:/app
+      - ../models:/models  # חייב גישה למודלים כדי לטעון אותם
+    environment:
+      - CELERY_BROKER_URL=redis://redis:6379/0
+      - CELERY_RESULT_BACKEND=redis://redis:6379/0
+    depends_on:
+      - redis
+
+  # 4. The Face (Streamlit) - הממשק למשתמש.
+  frontend:
+    build: .
+    container_name: radcom_frontend
+    command: streamlit run streamlit_app.py
+    volumes:
+      - .:/app
+    ports:
+      - "8501:8501"
+    environment:
+      - API_URL=http://backend:8000
+    depends_on:
+      - backend

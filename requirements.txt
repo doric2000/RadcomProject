@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+celery
+redis
+streamlit
+pandas
+scikit-learn
+joblib
+python-multipart
+requests
