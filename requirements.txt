@@ -5,6 +5,7 @@ redis
 streamlit
 pandas
 scikit-learn
+scipy
 joblib
 python-multipart
 requests

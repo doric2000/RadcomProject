@@ -4,3 +4,4 @@ __pycache__/
 models/
 *.joblib
 *.pkl
+*.log
