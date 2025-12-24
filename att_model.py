@@ -11,6 +11,12 @@ from sklearn.metrics import accuracy_score, classification_report
 
 warnings.filterwarnings("ignore")
 
+import logging
+from log_setup import configure_logging
+
+configure_logging()
+logger = logging.getLogger(__name__)
+
 
 def extract_isolation_features(df, q_large=0.90, n_packets=20):
     """
@@ -114,11 +120,11 @@ def extract_isolation_features(df, q_large=0.90, n_packets=20):
 
 
 def train_att_isolation():
-    print("-> Loading Data...")
+    logger.info("-> Loading data...")
     train = pd.read_csv("data/attribution/radcom_att_train.csv")
     test = pd.read_csv("data/attribution/radcom_att_test.csv")
 
-    print("-> Extracting Features (your winning logic)...")
+    logger.info("-> Extracting features (your winning logic)...")
     train_eng = extract_isolation_features(train, q_large=0.90, n_packets=20)
     test_eng = extract_isolation_features(test, q_large=0.90, n_packets=20)
 
@@ -144,7 +150,7 @@ def train_att_isolation():
     y_enc = le.fit_transform(y)
     y_test_enc = le.transform(y_test)
 
-    print("-> Training Ensemble...")
+    logger.info("-> Training ensemble...")
 
     # Keep KNN, but reduce its influence (it overfits hard on tiny train sets)
     clf_knn = KNeighborsClassifier(n_neighbors=1, metric="manhattan")
@@ -171,8 +177,8 @@ def train_att_isolation():
     preds = ensemble.predict(X_test_scaled)
     acc = accuracy_score(y_test_enc, preds)
 
-    print(f"\n🏆 RESULT: {acc:.2%}\n")
-    print(classification_report(y_test_enc, preds, target_names=le.classes_))
+    logger.info(f"[RESULT] RESULT: {acc:.2%}")
+    logger.info('\n' + classification_report(y_test_enc, preds, target_names=le.classes_))
 
     # Save assets
     os.makedirs("models", exist_ok=True)
@@ -180,7 +186,7 @@ def train_att_isolation():
     joblib.dump(scaler, "models/att_scaler.pkl")
     joblib.dump(le, "models/att_label_encoder.pkl")
     joblib.dump(features, "models/att_columns.pkl")
-    print("✅ Assets saved.")
+    logger.info("[SUCCESS] Assets saved.")
 
 
 if __name__ == "__main__":

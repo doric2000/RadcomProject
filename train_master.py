@@ -12,6 +12,12 @@ from sklearn.metrics import accuracy_score, classification_report
 
 warnings.filterwarnings('ignore')
 
+import logging
+from log_setup import configure_logging
+
+configure_logging()
+logger = logging.getLogger(__name__)
+
 # Configuration for paths
 PATHS = {
     'att': {'train': 'data/attribution/radcom_att_train.csv', 'test': 'data/attribution/radcom_att_test.csv'},
@@ -78,14 +84,15 @@ def prepare_data(df_train, df_test, target_col):
     return X, y, X_test, y_test
 
 def train_attribution_task():
-    print(f"\n{'='*40}\n🚀 TRAINING ATTRIBUTION (The Specialist)\n{'='*40}")
+    logger.info(f"\n{'='*40}\n[RUN] TRAINING ATTRIBUTION (The Specialist)\n{'='*40}")
     
     # Load Data
     try:
         train = pd.read_csv(PATHS['att']['train'])
         test = pd.read_csv(PATHS['att']['test'])
     except FileNotFoundError:
-        print("❌ Error: Files not found. Check PATHS config.")
+        logger.error("[ERROR] Files not found. Check PATHS config.")
+        return
         return
 
     X, y, X_test, y_test = prepare_data(train, test, 'attribution')
@@ -121,7 +128,7 @@ def train_attribution_task():
     # Metrics
     preds = ensemble.predict(X_test_scaled)
     acc = accuracy_score(y_test_enc, preds)
-    print(f"🏆 ATTRIBUTION ACCURACY: {acc:.2%}")
+    logger.info(f"[RESULT] ATTRIBUTION ACCURACY: {acc:.2%}")
     
     # Save Artifacts
     os.makedirs('models', exist_ok=True)
@@ -131,13 +138,14 @@ def train_attribution_task():
     joblib.dump(le, 'models/att_le.joblib')
 
 def train_application_task():
-    print(f"\n{'='*40}\n🚀 TRAINING APPLICATION (The Beast)\n{'='*40}")
+    logger.info(f"\n{'='*40}\n[RUN] TRAINING APPLICATION (The Beast)\n{'='*40}")
     
     try:
         train = pd.read_csv(PATHS['app']['train'])
         test = pd.read_csv(PATHS['app']['test'])
     except FileNotFoundError:
-        print("❌ Error: Files not found. Check PATHS config.")
+        logger.error("[ERROR] Files not found. Check PATHS config.")
+        return
         return
 
     X, y, X_test, y_test = prepare_data(train, test, 'label')
@@ -164,7 +172,7 @@ def train_application_task():
     
     preds = ensemble.predict(X_test)
     acc = accuracy_score(y_test_enc, preds)
-    print(f"🏆 APPLICATION ACCURACY: {acc:.2%}")
+    logger.info(f"[RESULT] APPLICATION ACCURACY: {acc:.2%}")
     
     # Save Artifacts
     joblib.dump(ensemble, 'models/app_model.joblib')

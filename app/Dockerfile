@@ -1,18 +1,18 @@
-# משתמשים בגרסה רזה של פייתון כדי שהאימג' יהיה קל
+# Use a slim Python image to keep the image small
 FROM python:3.10-slim
 
-# הגדרת תיקיית עבודה
+# Set working directory
 WORKDIR /app
 
-# התקנת תלויות מערכת (אם צריך)
+# Install system dependencies (if needed)
 RUN apt-get update && apt-get install -y build-essential
 
-# העתקת קובץ הדרישות והתקנת ספריות פייתון
+# Copy requirements and install Python packages
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# העתקת שאר הקוד
+# Copy the rest of the code
 COPY . .
 
-# חשיפת פורטים (רק לתיעוד, ה-Compose קובע בפועל)
+# Expose ports (for documentation; Compose sets them)
 EXPOSE 8000 8501

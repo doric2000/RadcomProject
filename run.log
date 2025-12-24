@@ -1,0 +1,1014 @@
+2025-12-24 15:34:30,296 - INFO - -> Loading data...
+2025-12-24 15:34:30,300 - INFO - -> Extracting features (your winning logic)...
+2025-12-24 15:34:30,311 - INFO - -> Training ensemble...
+2025-12-24 15:34:30,533 - INFO - [RESULT] RESULT: 92.00%
+2025-12-24 15:34:30,536 - INFO - 
+                     precision    recall  f1-score   support
+
+                VOD       1.00      1.00      1.00         5
+      file download       1.00      1.00      1.00         5
+    real_time_audio       1.00      0.60      0.75         5
+real_time_messaging       1.00      1.00      1.00         5
+    real_time_video       0.71      1.00      0.83         5
+
+           accuracy                           0.92        25
+          macro avg       0.94      0.92      0.92        25
+       weighted avg       0.94      0.92      0.92        25
+
+2025-12-24 15:34:30,608 - INFO - [SUCCESS] Assets saved.
+2025-12-24 15:34:41,211 - INFO - -> Loading data...
+2025-12-24 15:34:41,214 - INFO - -> Extracting features (your winning logic)...
+2025-12-24 15:34:41,225 - INFO - -> Training ensemble...
+2025-12-24 15:34:41,445 - INFO - [RESULT] RESULT: 92.00%
+2025-12-24 15:34:41,447 - INFO - 
+                     precision    recall  f1-score   support
+
+                VOD       1.00      1.00      1.00         5
+      file download       1.00      1.00      1.00         5
+    real_time_audio       1.00      0.60      0.75         5
+real_time_messaging       1.00      1.00      1.00         5
+    real_time_video       0.71      1.00      0.83         5
+
+           accuracy                           0.92        25
+          macro avg       0.94      0.92      0.92        25
+       weighted avg       0.94      0.92      0.92        25
+
+2025-12-24 15:34:41,515 - INFO - [SUCCESS] Assets saved.
+2025-12-24 16:21:58,253 - INFO - ==================================================
+2025-12-24 16:21:58,254 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 16:21:58,254 - INFO - ==================================================
+2025-12-24 16:21:58,254 - INFO - -> Loading data...
+2025-12-24 16:21:58,262 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 16:21:58,263 - INFO -    Unique labels in train: 128
+2025-12-24 16:21:58,263 - INFO - -> Extracting features...
+2025-12-24 16:21:58,348 - INFO -    Feature count: 137
+2025-12-24 16:21:58,348 - INFO - -> Scaling features...
+2025-12-24 16:21:58,351 - INFO - -> Building ensemble model...
+2025-12-24 16:21:58,351 - INFO - -> Training ensemble (this may take a moment)...
+2025-12-24 16:22:38,325 - INFO - -> Evaluating on test set...
+2025-12-24 16:22:38,513 - INFO - [RESULT] APPLICATION ACCURACY: 49.22%
+2025-12-24 16:22:38,516 - INFO - 
+                       precision    recall  f1-score   support
+
+             1inch.io       0.75      0.60      0.67         5
+   20thcenturystudios       0.60      0.60      0.60         5
+              YouTube       0.25      0.20      0.22         5
+        aboutads.info       0.80      0.80      0.80         5
+   adventuresbydisney       0.67      0.80      0.73         5
+alainelkanninterviews       1.00      1.00      1.00         5
+           algemeiner       0.40      0.40      0.40         5
+            amazonaws       0.57      0.80      0.67         5
+                apple       0.40      0.40      0.40         5
+          arstechnica       0.50      0.40      0.44         5
+       atlantis-press       1.00      0.80      0.89         5
+                axios       0.29      0.80      0.42         5
+                  bbc       0.17      0.20      0.18         5
+              binance       0.33      0.20      0.25         5
+            bloomberg       0.00      0.00      0.00         5
+ bondprotocol.finance       0.25      0.20      0.22         5
+         braindao.org       0.50      0.60      0.55         5
+            brainfund       1.00      1.00      1.00         5
+           britannica       0.20      0.20      0.20         5
+      businessinsider       0.00      0.00      0.00         5
+             buzzfeed       0.33      0.20      0.25         5
+         buzzfeednews       0.71      1.00      0.83         5
+               ca.gov       0.25      0.20      0.22         5
+              cern.ch       0.83      1.00      0.91         5
+      citizendium.org       0.50      0.20      0.29         5
+                 cnbc       0.80      0.80      0.80         5
+                 cnet       0.50      0.40      0.44         5
+                  cnn       0.00      0.00      0.00         5
+            condenast       0.44      0.80      0.57         5
+  creativecommons.org       0.50      0.40      0.44         5
+          dailymotion       0.83      1.00      0.91         5
+        digitaltrends       0.67      0.40      0.50         5
+              discord       0.17      0.20      0.18         5
+               disney       0.31      0.80      0.44         5
+  disneymovieinsiders       0.33      0.40      0.36         5
+           disneyplus       0.50      0.20      0.29         5
+          disneystore       0.00      0.00      0.00         5
+              doi.org       0.83      1.00      0.91         5
+                 drip       1.00      0.60      0.75         5
+                 dtmg       1.00      1.00      1.00         5
+            economist       0.25      0.20      0.22         5
+       economistgroup       0.38      0.60      0.46         5
+              eia.gov       0.83      1.00      0.91         5
+      encyclopediaapi       0.50      0.80      0.62         5
+              epa.gov       1.00      0.40      0.57         5
+                 espn       0.00      0.00      0.00         5
+             facebook       0.00      0.00      0.00         5
+          factmonster       0.33      0.60      0.43         5
+              factset       0.40      0.40      0.40         5
+      familyeducation       0.50      0.20      0.29         5
+          fastcompany       0.43      0.60      0.50         5
+               flickr       0.56      1.00      0.71         5
+            flipboard       0.75      0.60      0.67         5
+               forbes       1.00      0.20      0.33         5
+          foxbusiness       0.22      0.40      0.29         5
+              foxnews       1.00      0.40      0.57         5
+           foxweather       0.43      0.60      0.50         5
+         frax.finance       1.00      0.40      0.57         5
+               github       0.00      0.00      0.00         5
+              gizmodo       0.60      0.60      0.60         5
+                   go       0.00      0.00      0.00         5
+               google       0.62      1.00      0.77         5
+     googleadservices       0.80      0.80      0.80         5
+              govt.nz       1.00      1.00      1.00         5
+       huffingtonpost       0.00      0.00      0.00         5
+             huffpost       0.00      0.00      0.00         5
+          independent       0.33      0.60      0.43         5
+           infoplease       0.33      0.20      0.25         5
+            instagram       0.17      0.20      0.18         5
+              iq.wiki       0.00      0.00      0.00         5
+          israelhayom       1.00      0.40      0.57         5
+                jpost       0.60      0.60      0.60         5
+             linkedin       0.25      0.20      0.22         5
+                 mako       0.75      0.60      0.67         5
+               marvel       0.56      1.00      0.71         5
+      merriam-webster       0.50      0.40      0.44         5
+       moviesanywhere       0.57      0.80      0.67         5
+   nationalgeographic       0.50      0.40      0.44         5
+               nature       0.00      0.00      0.00         5
+              nbcnews       1.00      0.80      0.89         5
+                 ndtv       0.83      1.00      0.91         5
+             newsweek       0.33      0.20      0.25         5
+            newyorker       0.50      0.60      0.55         5
+                  npr       0.67      0.40      0.50         5
+              nytimes       0.80      0.80      0.80         5
+               odysee       0.50      0.60      0.55         5
+              outkick       0.25      0.20      0.22         5
+                pcmag       0.50      0.20      0.29         5
+            pinterest       1.00      0.20      0.33         5
+             politico       0.20      0.20      0.20         5
+               reddit       0.20      0.20      0.20         5
+            resources       0.50      0.80      0.62         5
+              revolut       0.57      0.80      0.67         5
+         scholarpedia       1.00      0.80      0.89         5
+                slate       0.20      0.20      0.20         5
+              spotify       0.17      0.20      0.18         5
+          squarespace       0.17      0.20      0.18         5
+                 ssrn       0.00      0.00      0.00         5
+             starwars       0.45      1.00      0.62         5
+             substack       0.43      0.60      0.50         5
+                 t.me       0.43      0.60      0.50         5
+        teachervision       0.44      0.80      0.57         5
+     technologyreview       0.75      0.60      0.67         5
+            techradar       0.25      0.20      0.22         5
+                  ted       0.36      0.80      0.50         5
+          theguardian       0.67      0.40      0.50         5
+ thewaltdisneycompany       0.60      0.60      0.60         5
+               tiktok       1.00      0.80      0.89         5
+         tomshardware       0.67      0.40      0.50         5
+               tubitv       0.80      0.80      0.80         5
+               twitch       0.25      0.20      0.22         5
+              twitter       0.17      0.20      0.18         5
+                upbit       0.00      0.00      0.00         5
+             usda.gov       0.83      1.00      0.91         5
+                 veoh       1.00      1.00      1.00         5
+                vimeo       1.00      1.00      1.00         5
+                   vk       0.71      1.00      0.83         5
+                  vox       0.00      0.00      0.00         5
+              vulture       0.00      0.00      0.00         5
+                walla       0.50      0.20      0.29         5
+        wikimedia.org       0.00      0.00      0.00         5
+        wikipedia.org       0.50      0.80      0.62         5
+                wired       1.00      0.60      0.75         5
+            wprdc.org       1.00      1.00      1.00         5
+                    x       0.40      0.40      0.40         5
+          ycombinator       0.50      0.40      0.44         5
+                 ynet       0.30      0.60      0.40         5
+        youradchoices       0.80      0.80      0.80         5
+
+             accuracy                           0.49       640
+            macro avg       0.50      0.49      0.47       640
+         weighted avg       0.50      0.49      0.47       640
+
+2025-12-24 16:22:38,517 - INFO - -> Saving model artifacts...
+2025-12-24 16:22:39,240 - INFO - [SUCCESS] Application model saved to models/
+2025-12-24 16:22:39,241 - INFO - ==================================================
+2025-12-24 16:22:39,293 - INFO - ==================================================
+2025-12-24 16:22:39,293 - INFO - [RUN] GENERATING SUBMISSION FOR VALIDATION SET
+2025-12-24 16:22:39,293 - INFO - ==================================================
+2025-12-24 16:22:39,293 - INFO - -> Loading validation data from data/APP-1/radcom_app_val_without_labels.csv...
+2025-12-24 16:22:39,420 - INFO -    Validation samples: 30097
+2025-12-24 16:22:39,420 - INFO - -> Loading trained model...
+2025-12-24 16:22:40,197 - INFO - -> Running inference...
+2025-12-24 16:22:44,556 - INFO - [SUCCESS] Submission saved to submission_app.csv
+2025-12-24 16:22:44,556 - INFO -    Total predictions: 30097
+2025-12-24 16:22:44,556 - INFO - ==================================================
+2025-12-24 16:27:58,750 - INFO - ==================================================
+2025-12-24 16:27:58,750 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 16:27:58,750 - INFO - ==================================================
+2025-12-24 16:27:58,751 - INFO - -> Loading data...
+2025-12-24 16:27:58,770 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 16:27:58,771 - INFO -    Unique labels in train: 128
+2025-12-24 16:27:58,771 - INFO - -> Extracting features...
+2025-12-24 16:27:58,867 - INFO -    Feature count: 137
+2025-12-24 16:27:58,868 - INFO - -> Scaling features...
+2025-12-24 16:28:13,445 - INFO - ==================================================
+2025-12-24 16:28:13,446 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 16:28:13,446 - INFO - ==================================================
+2025-12-24 16:28:13,446 - INFO - -> Loading data...
+2025-12-24 16:28:13,454 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 16:28:13,454 - INFO -    Unique labels in train: 128
+2025-12-24 16:28:13,454 - INFO - -> Extracting features...
+2025-12-24 16:28:13,541 - INFO -    Feature count: 137
+2025-12-24 16:28:13,541 - INFO - -> Scaling features...
+2025-12-24 16:28:13,545 - INFO - -> Running cross-validated model selection on TRAIN only...
+2025-12-24 16:32:47,944 - INFO -    CV accuracy [xgb]: 35.62% (± 3.62%)
+2025-12-24 16:32:52,984 - INFO -    CV accuracy [rf]: 44.84% (± 1.61%)
+2025-12-24 16:32:57,055 - INFO -    CV accuracy [et]: 44.06% (± 1.45%)
+2025-12-24 16:35:53,325 - INFO -    CV accuracy [logreg]: 25.31% (± 2.95%)
+2025-12-24 16:39:28,670 - INFO -    CV accuracy [svc_cal]: 15.62% (± 1.48%)
+2025-12-24 16:50:49,429 - INFO -    CV accuracy [ensemble]: 35.16% (± 1.48%)
+2025-12-24 16:50:49,430 - INFO - -> Tuning XGBoost with randomized search...
+2025-12-24 16:53:48,769 - INFO - [RESULT] Best tuned XGB CV accuracy: 36.88% | params: {'subsample': 0.85, 'reg_lambda': 1.0, 'n_estimators': 400, 'min_child_weight': 1, 'max_depth': 8, 'learning_rate': 0.03, 'gamma': 0.0, 'colsample_bytree': 0.7}
+2025-12-24 16:53:48,771 - INFO - [RESULT] Selected best model by CV: rf (CV=44.84%)
+2025-12-24 16:53:48,780 - INFO - -> Training selected model on full TRAIN: rf...
+2025-12-24 16:53:49,732 - INFO - -> Evaluating on test set...
+2025-12-24 16:53:49,850 - INFO - [RESULT] APPLICATION ACCURACY: 50.62%
+2025-12-24 16:53:49,854 - INFO - 
+                       precision    recall  f1-score   support
+
+             1inch.io       0.67      0.40      0.50         5
+   20thcenturystudios       0.43      0.60      0.50         5
+              YouTube       1.00      0.20      0.33         5
+        aboutads.info       0.80      0.80      0.80         5
+   adventuresbydisney       0.67      0.80      0.73         5
+alainelkanninterviews       1.00      1.00      1.00         5
+           algemeiner       0.33      0.20      0.25         5
+            amazonaws       0.71      1.00      0.83         5
+                apple       0.60      0.60      0.60         5
+          arstechnica       0.50      0.60      0.55         5
+       atlantis-press       1.00      0.80      0.89         5
+                axios       0.60      0.60      0.60         5
+                  bbc       0.50      0.20      0.29         5
+              binance       0.40      0.40      0.40         5
+            bloomberg       0.00      0.00      0.00         5
+ bondprotocol.finance       0.29      0.40      0.33         5
+         braindao.org       0.20      0.20      0.20         5
+            brainfund       1.00      1.00      1.00         5
+           britannica       0.25      0.20      0.22         5
+      businessinsider       0.00      0.00      0.00         5
+             buzzfeed       0.00      0.00      0.00         5
+         buzzfeednews       0.40      0.80      0.53         5
+               ca.gov       0.20      0.20      0.20         5
+              cern.ch       0.83      1.00      0.91         5
+      citizendium.org       0.20      0.20      0.20         5
+                 cnbc       0.38      0.60      0.46         5
+                 cnet       0.67      0.40      0.50         5
+                  cnn       0.50      0.20      0.29         5
+            condenast       0.50      0.60      0.55         5
+  creativecommons.org       0.75      0.60      0.67         5
+          dailymotion       1.00      1.00      1.00         5
+        digitaltrends       0.40      0.40      0.40         5
+              discord       0.25      0.20      0.22         5
+               disney       0.40      0.80      0.53         5
+  disneymovieinsiders       0.38      0.60      0.46         5
+           disneyplus       1.00      0.20      0.33         5
+          disneystore       0.60      0.60      0.60         5
+              doi.org       0.62      1.00      0.77         5
+                 drip       0.80      0.80      0.80         5
+                 dtmg       1.00      1.00      1.00         5
+            economist       0.00      0.00      0.00         5
+       economistgroup       0.33      0.60      0.43         5
+              eia.gov       0.83      1.00      0.91         5
+      encyclopediaapi       0.71      1.00      0.83         5
+              epa.gov       1.00      0.40      0.57         5
+                 espn       0.50      0.20      0.29         5
+             facebook       0.00      0.00      0.00         5
+          factmonster       0.27      0.60      0.38         5
+              factset       1.00      0.60      0.75         5
+      familyeducation       0.20      0.20      0.20         5
+          fastcompany       0.50      0.80      0.62         5
+               flickr       0.62      1.00      0.77         5
+            flipboard       0.50      0.40      0.44         5
+               forbes       0.50      0.20      0.29         5
+          foxbusiness       0.15      0.40      0.22         5
+              foxnews       1.00      0.40      0.57         5
+           foxweather       0.43      0.60      0.50         5
+         frax.finance       1.00      0.40      0.57         5
+               github       0.00      0.00      0.00         5
+              gizmodo       1.00      0.60      0.75         5
+                   go       0.00      0.00      0.00         5
+               google       0.71      1.00      0.83         5
+     googleadservices       0.67      0.80      0.73         5
+              govt.nz       0.57      0.80      0.67         5
+       huffingtonpost       0.00      0.00      0.00         5
+             huffpost       0.17      0.20      0.18         5
+          independent       0.40      0.80      0.53         5
+           infoplease       0.33      0.20      0.25         5
+            instagram       0.50      1.00      0.67         5
+              iq.wiki       0.00      0.00      0.00         5
+          israelhayom       1.00      0.40      0.57         5
+                jpost       0.50      0.60      0.55         5
+             linkedin       0.33      0.20      0.25         5
+                 mako       0.75      0.60      0.67         5
+               marvel       0.50      1.00      0.67         5
+      merriam-webster       0.33      0.20      0.25         5
+       moviesanywhere       0.60      0.60      0.60         5
+   nationalgeographic       0.33      0.20      0.25         5
+               nature       0.00      0.00      0.00         5
+              nbcnews       1.00      0.60      0.75         5
+                 ndtv       1.00      1.00      1.00         5
+             newsweek       0.50      0.20      0.29         5
+            newyorker       0.50      0.40      0.44         5
+                  npr       1.00      0.40      0.57         5
+              nytimes       0.80      0.80      0.80         5
+               odysee       0.80      0.80      0.80         5
+              outkick       0.17      0.20      0.18         5
+                pcmag       0.50      0.40      0.44         5
+            pinterest       0.50      0.20      0.29         5
+             politico       0.17      0.20      0.18         5
+               reddit       1.00      0.20      0.33         5
+            resources       0.44      0.80      0.57         5
+              revolut       0.67      0.80      0.73         5
+         scholarpedia       0.80      0.80      0.80         5
+                slate       0.20      0.20      0.20         5
+              spotify       0.25      0.40      0.31         5
+          squarespace       0.29      0.40      0.33         5
+                 ssrn       0.40      0.40      0.40         5
+             starwars       0.42      1.00      0.59         5
+             substack       0.38      0.60      0.46         5
+                 t.me       0.75      0.60      0.67         5
+        teachervision       0.57      0.80      0.67         5
+     technologyreview       0.33      0.60      0.43         5
+            techradar       0.00      0.00      0.00         5
+                  ted       0.33      0.40      0.36         5
+          theguardian       0.60      0.60      0.60         5
+ thewaltdisneycompany       0.60      0.60      0.60         5
+               tiktok       1.00      0.80      0.89         5
+         tomshardware       0.40      0.40      0.40         5
+               tubitv       0.80      0.80      0.80         5
+               twitch       0.20      0.20      0.20         5
+              twitter       0.00      0.00      0.00         5
+                upbit       1.00      0.20      0.33         5
+             usda.gov       0.71      1.00      0.83         5
+                 veoh       1.00      1.00      1.00         5
+                vimeo       1.00      1.00      1.00         5
+                   vk       0.67      0.80      0.73         5
+                  vox       0.00      0.00      0.00         5
+              vulture       0.00      0.00      0.00         5
+                walla       1.00      0.40      0.57         5
+        wikimedia.org       0.00      0.00      0.00         5
+        wikipedia.org       0.62      1.00      0.77         5
+                wired       0.75      0.60      0.67         5
+            wprdc.org       0.80      0.80      0.80         5
+                    x       0.67      0.40      0.50         5
+          ycombinator       0.75      0.60      0.67         5
+                 ynet       0.22      0.40      0.29         5
+        youradchoices       0.80      0.80      0.80         5
+
+             accuracy                           0.51       640
+            macro avg       0.53      0.51      0.49       640
+         weighted avg       0.53      0.51      0.49       640
+
+2025-12-24 16:53:49,854 - INFO - -> Saving model artifacts...
+2025-12-24 16:53:50,222 - INFO - [SUCCESS] Application model saved to models/
+2025-12-24 16:53:50,222 - INFO - ==================================================
+2025-12-24 16:53:50,295 - INFO - ==================================================
+2025-12-24 16:53:50,298 - INFO - [RUN] GENERATING SUBMISSION FOR VALIDATION SET
+2025-12-24 16:53:50,298 - INFO - ==================================================
+2025-12-24 16:53:50,298 - INFO - -> Loading validation data from data/APP-1/radcom_app_val_without_labels.csv...
+2025-12-24 16:53:50,436 - INFO -    Validation samples: 30097
+2025-12-24 16:53:50,436 - INFO - -> Loading trained model...
+2025-12-24 16:53:50,760 - INFO - -> Running inference...
+2025-12-24 16:53:54,039 - INFO - [SUCCESS] Submission saved to submission_app.csv
+2025-12-24 16:53:54,039 - INFO -    Total predictions: 30097
+2025-12-24 16:53:54,039 - INFO - ==================================================
+2025-12-24 17:14:20,581 - INFO - ==================================================
+2025-12-24 17:14:20,583 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 17:14:20,583 - INFO - ==================================================
+2025-12-24 17:14:20,583 - INFO - -> Loading data...
+2025-12-24 17:14:20,595 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 17:14:20,597 - INFO -    Unique labels in train: 128
+2025-12-24 17:14:20,618 - INFO - -> Training RandomForest... (features=132)
+2025-12-24 17:14:21,614 - INFO - -> Evaluating on test set...
+2025-12-24 17:14:21,717 - INFO - [RESULT] APPLICATION ACCURACY: 50.94%
+2025-12-24 17:14:21,721 - INFO - 
+                       precision    recall  f1-score   support
+
+             1inch.io       0.67      0.40      0.50         5
+   20thcenturystudios       0.50      0.60      0.55         5
+              YouTube       0.67      0.40      0.50         5
+        aboutads.info       0.80      0.80      0.80         5
+   adventuresbydisney       0.67      0.80      0.73         5
+alainelkanninterviews       1.00      1.00      1.00         5
+           algemeiner       0.50      0.20      0.29         5
+            amazonaws       0.71      1.00      0.83         5
+                apple       0.75      0.60      0.67         5
+          arstechnica       0.50      0.60      0.55         5
+       atlantis-press       1.00      0.80      0.89         5
+                axios       0.43      0.60      0.50         5
+                  bbc       0.33      0.20      0.25         5
+              binance       0.50      0.40      0.44         5
+            bloomberg       0.00      0.00      0.00         5
+ bondprotocol.finance       0.43      0.60      0.50         5
+         braindao.org       0.25      0.20      0.22         5
+            brainfund       1.00      1.00      1.00         5
+           britannica       0.25      0.20      0.22         5
+      businessinsider       0.00      0.00      0.00         5
+             buzzfeed       0.00      0.00      0.00         5
+         buzzfeednews       0.29      0.40      0.33         5
+               ca.gov       0.17      0.20      0.18         5
+              cern.ch       0.83      1.00      0.91         5
+      citizendium.org       0.20      0.20      0.20         5
+                 cnbc       0.40      0.40      0.40         5
+                 cnet       1.00      0.40      0.57         5
+                  cnn       0.33      0.20      0.25         5
+            condenast       0.60      0.60      0.60         5
+  creativecommons.org       0.60      0.60      0.60         5
+          dailymotion       1.00      1.00      1.00         5
+        digitaltrends       0.60      0.60      0.60         5
+              discord       0.17      0.20      0.18         5
+               disney       0.31      0.80      0.44         5
+  disneymovieinsiders       0.33      0.60      0.43         5
+           disneyplus       0.25      0.20      0.22         5
+          disneystore       0.67      0.40      0.50         5
+              doi.org       0.71      1.00      0.83         5
+                 drip       0.67      0.80      0.73         5
+                 dtmg       0.83      1.00      0.91         5
+            economist       0.00      0.00      0.00         5
+       economistgroup       0.43      0.60      0.50         5
+              eia.gov       0.83      1.00      0.91         5
+      encyclopediaapi       0.71      1.00      0.83         5
+              epa.gov       1.00      0.40      0.57         5
+                 espn       0.00      0.00      0.00         5
+             facebook       0.00      0.00      0.00         5
+          factmonster       0.27      0.60      0.38         5
+              factset       1.00      0.60      0.75         5
+      familyeducation       0.25      0.20      0.22         5
+          fastcompany       0.36      0.80      0.50         5
+               flickr       0.62      1.00      0.77         5
+            flipboard       0.50      0.40      0.44         5
+               forbes       1.00      0.20      0.33         5
+          foxbusiness       0.17      0.40      0.24         5
+              foxnews       1.00      0.40      0.57         5
+           foxweather       0.38      0.60      0.46         5
+         frax.finance       1.00      0.40      0.57         5
+               github       0.00      0.00      0.00         5
+              gizmodo       1.00      0.60      0.75         5
+                   go       0.00      0.00      0.00         5
+               google       0.71      1.00      0.83         5
+     googleadservices       0.67      0.80      0.73         5
+              govt.nz       0.67      0.80      0.73         5
+       huffingtonpost       0.25      0.20      0.22         5
+             huffpost       0.14      0.20      0.17         5
+          independent       0.43      0.60      0.50         5
+           infoplease       0.33      0.20      0.25         5
+            instagram       0.50      1.00      0.67         5
+              iq.wiki       0.00      0.00      0.00         5
+          israelhayom       1.00      0.40      0.57         5
+                jpost       0.33      0.40      0.36         5
+             linkedin       0.33      0.20      0.25         5
+                 mako       0.60      0.60      0.60         5
+               marvel       0.50      1.00      0.67         5
+      merriam-webster       0.33      0.20      0.25         5
+       moviesanywhere       0.60      0.60      0.60         5
+   nationalgeographic       0.33      0.20      0.25         5
+               nature       0.00      0.00      0.00         5
+              nbcnews       1.00      0.60      0.75         5
+                 ndtv       1.00      1.00      1.00         5
+             newsweek       0.50      0.20      0.29         5
+            newyorker       0.60      0.60      0.60         5
+                  npr       1.00      0.40      0.57         5
+              nytimes       0.80      0.80      0.80         5
+               odysee       0.75      0.60      0.67         5
+              outkick       0.29      0.40      0.33         5
+                pcmag       0.60      0.60      0.60         5
+            pinterest       0.67      0.40      0.50         5
+             politico       0.12      0.20      0.15         5
+               reddit       0.50      0.20      0.29         5
+            resources       0.44      0.80      0.57         5
+              revolut       0.44      0.80      0.57         5
+         scholarpedia       0.80      0.80      0.80         5
+                slate       0.25      0.20      0.22         5
+              spotify       0.29      0.40      0.33         5
+          squarespace       0.25      0.40      0.31         5
+                 ssrn       0.25      0.20      0.22         5
+             starwars       0.45      1.00      0.62         5
+             substack       0.50      0.60      0.55         5
+                 t.me       0.75      0.60      0.67         5
+        teachervision       0.67      0.80      0.73         5
+     technologyreview       0.50      0.80      0.62         5
+            techradar       0.00      0.00      0.00         5
+                  ted       0.75      0.60      0.67         5
+          theguardian       0.50      0.40      0.44         5
+ thewaltdisneycompany       0.50      0.40      0.44         5
+               tiktok       1.00      0.80      0.89         5
+         tomshardware       0.60      0.60      0.60         5
+               tubitv       0.67      0.80      0.73         5
+               twitch       0.25      0.20      0.22         5
+              twitter       0.00      0.00      0.00         5
+                upbit       1.00      0.20      0.33         5
+             usda.gov       0.71      1.00      0.83         5
+                 veoh       1.00      1.00      1.00         5
+                vimeo       1.00      1.00      1.00         5
+                   vk       0.67      0.80      0.73         5
+                  vox       0.00      0.00      0.00         5
+              vulture       0.20      0.20      0.20         5
+                walla       0.67      0.40      0.50         5
+        wikimedia.org       0.00      0.00      0.00         5
+        wikipedia.org       0.56      1.00      0.71         5
+                wired       0.60      0.60      0.60         5
+            wprdc.org       0.80      0.80      0.80         5
+                    x       0.67      0.40      0.50         5
+          ycombinator       0.75      0.60      0.67         5
+                 ynet       0.30      0.60      0.40         5
+        youradchoices       1.00      0.80      0.89         5
+
+             accuracy                           0.51       640
+            macro avg       0.52      0.51      0.49       640
+         weighted avg       0.52      0.51      0.49       640
+
+2025-12-24 17:14:21,721 - INFO - -> Saving model artifacts...
+2025-12-24 17:14:22,140 - INFO - [SUCCESS] Application model saved to models/
+2025-12-24 17:14:22,165 - INFO - ==================================================
+2025-12-24 17:14:22,165 - INFO - [RUN] GENERATING SUBMISSION FOR VALIDATION SET
+2025-12-24 17:14:22,165 - INFO - ==================================================
+2025-12-24 17:14:22,165 - INFO - -> Loading validation data from data/APP-1/radcom_app_val_without_labels.csv...
+2025-12-24 17:14:22,292 - INFO -    Validation samples: 30097
+2025-12-24 17:14:22,292 - INFO - -> Running inference...
+2025-12-24 17:14:24,518 - INFO - [SUCCESS] Submission saved to submission_app.csv
+2025-12-24 17:14:24,518 - INFO -    Total predictions: 30097
+2025-12-24 17:14:24,554 - INFO - ==================================================
+2025-12-24 17:14:24,554 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 17:14:24,554 - INFO - ==================================================
+2025-12-24 17:14:24,554 - INFO - -> Loading data...
+2025-12-24 17:14:24,564 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 17:14:24,564 - INFO -    Unique labels in train: 128
+2025-12-24 17:14:24,565 - INFO - -> Extracting features...
+2025-12-24 17:14:24,651 - INFO -    Feature count: 137
+2025-12-24 17:14:24,651 - INFO - -> Scaling features...
+2025-12-24 17:14:24,655 - INFO - -> Running cross-validated model selection on TRAIN only...
+2025-12-24 17:19:03,654 - INFO -    CV accuracy [xgb]: 35.62% (± 3.62%)
+2025-12-24 17:19:08,676 - INFO -    CV accuracy [rf]: 44.84% (± 1.61%)
+2025-12-24 17:19:12,930 - INFO -    CV accuracy [et]: 44.06% (± 1.45%)
+2025-12-24 17:22:17,535 - INFO -    CV accuracy [logreg]: 25.31% (± 2.95%)
+2025-12-24 17:25:50,664 - INFO -    CV accuracy [svc_cal]: 15.62% (± 1.48%)
+2025-12-24 17:37:19,146 - INFO -    CV accuracy [ensemble]: 35.16% (± 1.48%)
+2025-12-24 17:37:19,148 - INFO - -> Tuning XGBoost with randomized search...
+2025-12-24 17:39:45,602 - INFO - [RESULT] Best tuned XGB CV accuracy: 36.88% | params: {'subsample': 0.85, 'reg_lambda': 1.0, 'n_estimators': 400, 'min_child_weight': 1, 'max_depth': 8, 'learning_rate': 0.03, 'gamma': 0.0, 'colsample_bytree': 0.7}
+2025-12-24 17:39:45,603 - INFO - [RESULT] Selected best model by CV: rf (CV=44.84%)
+2025-12-24 17:39:45,613 - INFO - -> Training selected model on full TRAIN: rf...
+2025-12-24 17:39:46,617 - INFO - -> Evaluating on test set...
+2025-12-24 17:39:46,744 - INFO - [RESULT] APPLICATION ACCURACY: 50.62%
+2025-12-24 17:39:46,748 - INFO - 
+                       precision    recall  f1-score   support
+
+             1inch.io       0.67      0.40      0.50         5
+   20thcenturystudios       0.43      0.60      0.50         5
+              YouTube       1.00      0.20      0.33         5
+        aboutads.info       0.80      0.80      0.80         5
+   adventuresbydisney       0.67      0.80      0.73         5
+alainelkanninterviews       1.00      1.00      1.00         5
+           algemeiner       0.33      0.20      0.25         5
+            amazonaws       0.71      1.00      0.83         5
+                apple       0.60      0.60      0.60         5
+          arstechnica       0.50      0.60      0.55         5
+       atlantis-press       1.00      0.80      0.89         5
+                axios       0.60      0.60      0.60         5
+                  bbc       0.50      0.20      0.29         5
+              binance       0.40      0.40      0.40         5
+            bloomberg       0.00      0.00      0.00         5
+ bondprotocol.finance       0.29      0.40      0.33         5
+         braindao.org       0.20      0.20      0.20         5
+            brainfund       1.00      1.00      1.00         5
+           britannica       0.25      0.20      0.22         5
+      businessinsider       0.00      0.00      0.00         5
+             buzzfeed       0.00      0.00      0.00         5
+         buzzfeednews       0.40      0.80      0.53         5
+               ca.gov       0.20      0.20      0.20         5
+              cern.ch       0.83      1.00      0.91         5
+      citizendium.org       0.20      0.20      0.20         5
+                 cnbc       0.38      0.60      0.46         5
+                 cnet       0.67      0.40      0.50         5
+                  cnn       0.50      0.20      0.29         5
+            condenast       0.50      0.60      0.55         5
+  creativecommons.org       0.75      0.60      0.67         5
+          dailymotion       1.00      1.00      1.00         5
+        digitaltrends       0.40      0.40      0.40         5
+              discord       0.25      0.20      0.22         5
+               disney       0.40      0.80      0.53         5
+  disneymovieinsiders       0.38      0.60      0.46         5
+           disneyplus       1.00      0.20      0.33         5
+          disneystore       0.60      0.60      0.60         5
+              doi.org       0.62      1.00      0.77         5
+                 drip       0.80      0.80      0.80         5
+                 dtmg       1.00      1.00      1.00         5
+            economist       0.00      0.00      0.00         5
+       economistgroup       0.33      0.60      0.43         5
+              eia.gov       0.83      1.00      0.91         5
+      encyclopediaapi       0.71      1.00      0.83         5
+              epa.gov       1.00      0.40      0.57         5
+                 espn       0.50      0.20      0.29         5
+             facebook       0.00      0.00      0.00         5
+          factmonster       0.27      0.60      0.38         5
+              factset       1.00      0.60      0.75         5
+      familyeducation       0.20      0.20      0.20         5
+          fastcompany       0.50      0.80      0.62         5
+               flickr       0.62      1.00      0.77         5
+            flipboard       0.50      0.40      0.44         5
+               forbes       0.50      0.20      0.29         5
+          foxbusiness       0.15      0.40      0.22         5
+              foxnews       1.00      0.40      0.57         5
+           foxweather       0.43      0.60      0.50         5
+         frax.finance       1.00      0.40      0.57         5
+               github       0.00      0.00      0.00         5
+              gizmodo       1.00      0.60      0.75         5
+                   go       0.00      0.00      0.00         5
+               google       0.71      1.00      0.83         5
+     googleadservices       0.67      0.80      0.73         5
+              govt.nz       0.57      0.80      0.67         5
+       huffingtonpost       0.00      0.00      0.00         5
+             huffpost       0.17      0.20      0.18         5
+          independent       0.40      0.80      0.53         5
+           infoplease       0.33      0.20      0.25         5
+            instagram       0.50      1.00      0.67         5
+              iq.wiki       0.00      0.00      0.00         5
+          israelhayom       1.00      0.40      0.57         5
+                jpost       0.50      0.60      0.55         5
+             linkedin       0.33      0.20      0.25         5
+                 mako       0.75      0.60      0.67         5
+               marvel       0.50      1.00      0.67         5
+      merriam-webster       0.33      0.20      0.25         5
+       moviesanywhere       0.60      0.60      0.60         5
+   nationalgeographic       0.33      0.20      0.25         5
+               nature       0.00      0.00      0.00         5
+              nbcnews       1.00      0.60      0.75         5
+                 ndtv       1.00      1.00      1.00         5
+             newsweek       0.50      0.20      0.29         5
+            newyorker       0.50      0.40      0.44         5
+                  npr       1.00      0.40      0.57         5
+              nytimes       0.80      0.80      0.80         5
+               odysee       0.80      0.80      0.80         5
+              outkick       0.17      0.20      0.18         5
+                pcmag       0.50      0.40      0.44         5
+            pinterest       0.50      0.20      0.29         5
+             politico       0.17      0.20      0.18         5
+               reddit       1.00      0.20      0.33         5
+            resources       0.44      0.80      0.57         5
+              revolut       0.67      0.80      0.73         5
+         scholarpedia       0.80      0.80      0.80         5
+                slate       0.20      0.20      0.20         5
+              spotify       0.25      0.40      0.31         5
+          squarespace       0.29      0.40      0.33         5
+                 ssrn       0.40      0.40      0.40         5
+             starwars       0.42      1.00      0.59         5
+             substack       0.38      0.60      0.46         5
+                 t.me       0.75      0.60      0.67         5
+        teachervision       0.57      0.80      0.67         5
+     technologyreview       0.33      0.60      0.43         5
+            techradar       0.00      0.00      0.00         5
+                  ted       0.33      0.40      0.36         5
+          theguardian       0.60      0.60      0.60         5
+ thewaltdisneycompany       0.60      0.60      0.60         5
+               tiktok       1.00      0.80      0.89         5
+         tomshardware       0.40      0.40      0.40         5
+               tubitv       0.80      0.80      0.80         5
+               twitch       0.20      0.20      0.20         5
+              twitter       0.00      0.00      0.00         5
+                upbit       1.00      0.20      0.33         5
+             usda.gov       0.71      1.00      0.83         5
+                 veoh       1.00      1.00      1.00         5
+                vimeo       1.00      1.00      1.00         5
+                   vk       0.67      0.80      0.73         5
+                  vox       0.00      0.00      0.00         5
+              vulture       0.00      0.00      0.00         5
+                walla       1.00      0.40      0.57         5
+        wikimedia.org       0.00      0.00      0.00         5
+        wikipedia.org       0.62      1.00      0.77         5
+                wired       0.75      0.60      0.67         5
+            wprdc.org       0.80      0.80      0.80         5
+                    x       0.67      0.40      0.50         5
+          ycombinator       0.75      0.60      0.67         5
+                 ynet       0.22      0.40      0.29         5
+        youradchoices       0.80      0.80      0.80         5
+
+             accuracy                           0.51       640
+            macro avg       0.53      0.51      0.49       640
+         weighted avg       0.53      0.51      0.49       640
+
+2025-12-24 17:39:46,749 - INFO - -> Saving model artifacts...
+2025-12-24 17:39:47,153 - INFO - [SUCCESS] Application model saved to models/
+2025-12-24 17:39:47,153 - INFO - ==================================================
+2025-12-24 17:39:47,221 - INFO - ==================================================
+2025-12-24 17:39:47,221 - INFO - [RUN] GENERATING SUBMISSION FOR VALIDATION SET
+2025-12-24 17:39:47,221 - INFO - ==================================================
+2025-12-24 17:39:47,221 - INFO - -> Loading validation data from data/APP-1/radcom_app_val_without_labels.csv...
+2025-12-24 17:39:47,376 - INFO -    Validation samples: 30097
+2025-12-24 17:39:47,376 - INFO - -> Loading trained model...
+2025-12-24 17:39:47,737 - INFO - -> Running inference...
+2025-12-24 17:39:51,239 - INFO - [SUCCESS] Submission saved to submission_app.csv
+2025-12-24 17:39:51,239 - INFO -    Total predictions: 30097
+2025-12-24 17:39:51,239 - INFO - ==================================================
+2025-12-24 17:42:14,872 - INFO - ==================================================
+2025-12-24 17:42:14,873 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 17:42:14,873 - INFO - ==================================================
+2025-12-24 17:42:14,873 - INFO - -> Loading data...
+2025-12-24 17:42:14,881 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 17:42:14,882 - INFO -    Unique labels in train: 128
+2025-12-24 17:42:14,902 - INFO - -> Training RandomForest... (features=132)
+2025-12-24 17:42:15,952 - INFO - -> Evaluating on test set...
+2025-12-24 17:42:16,080 - INFO - [RESULT] APPLICATION ACCURACY: 50.94%
+2025-12-24 17:42:16,084 - INFO - 
+                       precision    recall  f1-score   support
+
+             1inch.io       0.67      0.40      0.50         5
+   20thcenturystudios       0.50      0.60      0.55         5
+              YouTube       0.67      0.40      0.50         5
+        aboutads.info       0.80      0.80      0.80         5
+   adventuresbydisney       0.67      0.80      0.73         5
+alainelkanninterviews       1.00      1.00      1.00         5
+           algemeiner       0.50      0.20      0.29         5
+            amazonaws       0.71      1.00      0.83         5
+                apple       0.75      0.60      0.67         5
+          arstechnica       0.50      0.60      0.55         5
+       atlantis-press       1.00      0.80      0.89         5
+                axios       0.43      0.60      0.50         5
+                  bbc       0.33      0.20      0.25         5
+              binance       0.50      0.40      0.44         5
+            bloomberg       0.00      0.00      0.00         5
+ bondprotocol.finance       0.43      0.60      0.50         5
+         braindao.org       0.25      0.20      0.22         5
+            brainfund       1.00      1.00      1.00         5
+           britannica       0.25      0.20      0.22         5
+      businessinsider       0.00      0.00      0.00         5
+             buzzfeed       0.00      0.00      0.00         5
+         buzzfeednews       0.29      0.40      0.33         5
+               ca.gov       0.17      0.20      0.18         5
+              cern.ch       0.83      1.00      0.91         5
+      citizendium.org       0.20      0.20      0.20         5
+                 cnbc       0.40      0.40      0.40         5
+                 cnet       1.00      0.40      0.57         5
+                  cnn       0.33      0.20      0.25         5
+            condenast       0.60      0.60      0.60         5
+  creativecommons.org       0.60      0.60      0.60         5
+          dailymotion       1.00      1.00      1.00         5
+        digitaltrends       0.60      0.60      0.60         5
+              discord       0.17      0.20      0.18         5
+               disney       0.31      0.80      0.44         5
+  disneymovieinsiders       0.33      0.60      0.43         5
+           disneyplus       0.25      0.20      0.22         5
+          disneystore       0.67      0.40      0.50         5
+              doi.org       0.71      1.00      0.83         5
+                 drip       0.67      0.80      0.73         5
+                 dtmg       0.83      1.00      0.91         5
+            economist       0.00      0.00      0.00         5
+       economistgroup       0.43      0.60      0.50         5
+              eia.gov       0.83      1.00      0.91         5
+      encyclopediaapi       0.71      1.00      0.83         5
+              epa.gov       1.00      0.40      0.57         5
+                 espn       0.00      0.00      0.00         5
+             facebook       0.00      0.00      0.00         5
+          factmonster       0.27      0.60      0.38         5
+              factset       1.00      0.60      0.75         5
+      familyeducation       0.25      0.20      0.22         5
+          fastcompany       0.36      0.80      0.50         5
+               flickr       0.62      1.00      0.77         5
+            flipboard       0.50      0.40      0.44         5
+               forbes       1.00      0.20      0.33         5
+          foxbusiness       0.17      0.40      0.24         5
+              foxnews       1.00      0.40      0.57         5
+           foxweather       0.38      0.60      0.46         5
+         frax.finance       1.00      0.40      0.57         5
+               github       0.00      0.00      0.00         5
+              gizmodo       1.00      0.60      0.75         5
+                   go       0.00      0.00      0.00         5
+               google       0.71      1.00      0.83         5
+     googleadservices       0.67      0.80      0.73         5
+              govt.nz       0.67      0.80      0.73         5
+       huffingtonpost       0.25      0.20      0.22         5
+             huffpost       0.14      0.20      0.17         5
+          independent       0.43      0.60      0.50         5
+           infoplease       0.33      0.20      0.25         5
+            instagram       0.50      1.00      0.67         5
+              iq.wiki       0.00      0.00      0.00         5
+          israelhayom       1.00      0.40      0.57         5
+                jpost       0.33      0.40      0.36         5
+             linkedin       0.33      0.20      0.25         5
+                 mako       0.60      0.60      0.60         5
+               marvel       0.50      1.00      0.67         5
+      merriam-webster       0.33      0.20      0.25         5
+       moviesanywhere       0.60      0.60      0.60         5
+   nationalgeographic       0.33      0.20      0.25         5
+               nature       0.00      0.00      0.00         5
+              nbcnews       1.00      0.60      0.75         5
+                 ndtv       1.00      1.00      1.00         5
+             newsweek       0.50      0.20      0.29         5
+            newyorker       0.60      0.60      0.60         5
+                  npr       1.00      0.40      0.57         5
+              nytimes       0.80      0.80      0.80         5
+               odysee       0.75      0.60      0.67         5
+              outkick       0.29      0.40      0.33         5
+                pcmag       0.60      0.60      0.60         5
+            pinterest       0.67      0.40      0.50         5
+             politico       0.12      0.20      0.15         5
+               reddit       0.50      0.20      0.29         5
+            resources       0.44      0.80      0.57         5
+              revolut       0.44      0.80      0.57         5
+         scholarpedia       0.80      0.80      0.80         5
+                slate       0.25      0.20      0.22         5
+              spotify       0.29      0.40      0.33         5
+          squarespace       0.25      0.40      0.31         5
+                 ssrn       0.25      0.20      0.22         5
+             starwars       0.45      1.00      0.62         5
+             substack       0.50      0.60      0.55         5
+                 t.me       0.75      0.60      0.67         5
+        teachervision       0.67      0.80      0.73         5
+     technologyreview       0.50      0.80      0.62         5
+            techradar       0.00      0.00      0.00         5
+                  ted       0.75      0.60      0.67         5
+          theguardian       0.50      0.40      0.44         5
+ thewaltdisneycompany       0.50      0.40      0.44         5
+               tiktok       1.00      0.80      0.89         5
+         tomshardware       0.60      0.60      0.60         5
+               tubitv       0.67      0.80      0.73         5
+               twitch       0.25      0.20      0.22         5
+              twitter       0.00      0.00      0.00         5
+                upbit       1.00      0.20      0.33         5
+             usda.gov       0.71      1.00      0.83         5
+                 veoh       1.00      1.00      1.00         5
+                vimeo       1.00      1.00      1.00         5
+                   vk       0.67      0.80      0.73         5
+                  vox       0.00      0.00      0.00         5
+              vulture       0.20      0.20      0.20         5
+                walla       0.67      0.40      0.50         5
+        wikimedia.org       0.00      0.00      0.00         5
+        wikipedia.org       0.56      1.00      0.71         5
+                wired       0.60      0.60      0.60         5
+            wprdc.org       0.80      0.80      0.80         5
+                    x       0.67      0.40      0.50         5
+          ycombinator       0.75      0.60      0.67         5
+                 ynet       0.30      0.60      0.40         5
+        youradchoices       1.00      0.80      0.89         5
+
+             accuracy                           0.51       640
+            macro avg       0.52      0.51      0.49       640
+         weighted avg       0.52      0.51      0.49       640
+
+2025-12-24 17:42:16,084 - INFO - -> Saving model artifacts...
+2025-12-24 17:42:16,299 - INFO - [SUCCESS] Application model saved to models/
+2025-12-24 17:42:16,329 - INFO - ==================================================
+2025-12-24 17:42:16,329 - INFO - [RUN] GENERATING SUBMISSION FOR VALIDATION SET
+2025-12-24 17:42:16,329 - INFO - ==================================================
+2025-12-24 17:42:16,329 - INFO - -> Loading validation data from data/APP-1/radcom_app_val_without_labels.csv...
+2025-12-24 17:42:16,463 - INFO -    Validation samples: 30097
+2025-12-24 17:42:16,463 - INFO - -> Running inference...
+2025-12-24 17:42:18,761 - INFO - [SUCCESS] Submission saved to submission_app.csv
+2025-12-24 17:42:18,761 - INFO -    Total predictions: 30097
+2025-12-24 17:42:45,835 - INFO - ==================================================
+2025-12-24 17:42:45,835 - INFO - [RUN] TRAINING APPLICATION MODEL (APP-1)
+2025-12-24 17:42:45,836 - INFO - ==================================================
+2025-12-24 17:42:45,836 - INFO - -> Loading data...
+2025-12-24 17:42:45,844 - INFO -    Train samples: 640, Test samples: 640
+2025-12-24 17:42:45,844 - INFO -    Unique labels in train: 128
+2025-12-24 17:42:45,863 - INFO - -> Training RandomForest... (features=132)
+2025-12-24 17:42:46,899 - INFO - -> Evaluating on test set...
+2025-12-24 17:42:47,015 - INFO - [RESULT] APPLICATION ACCURACY: 50.94%
+2025-12-24 17:42:47,019 - INFO - 
+                       precision    recall  f1-score   support
+
+             1inch.io       0.67      0.40      0.50         5
+   20thcenturystudios       0.50      0.60      0.55         5
+              YouTube       0.67      0.40      0.50         5
+        aboutads.info       0.80      0.80      0.80         5
+   adventuresbydisney       0.67      0.80      0.73         5
+alainelkanninterviews       1.00      1.00      1.00         5
+           algemeiner       0.50      0.20      0.29         5
+            amazonaws       0.71      1.00      0.83         5
+                apple       0.75      0.60      0.67         5
+          arstechnica       0.50      0.60      0.55         5
+       atlantis-press       1.00      0.80      0.89         5
+                axios       0.43      0.60      0.50         5
+                  bbc       0.33      0.20      0.25         5
+              binance       0.50      0.40      0.44         5
+            bloomberg       0.00      0.00      0.00         5
+ bondprotocol.finance       0.43      0.60      0.50         5
+         braindao.org       0.25      0.20      0.22         5
+            brainfund       1.00      1.00      1.00         5
+           britannica       0.25      0.20      0.22         5
+      businessinsider       0.00      0.00      0.00         5
+             buzzfeed       0.00      0.00      0.00         5
+         buzzfeednews       0.29      0.40      0.33         5
+               ca.gov       0.17      0.20      0.18         5
+              cern.ch       0.83      1.00      0.91         5
+      citizendium.org       0.20      0.20      0.20         5
+                 cnbc       0.40      0.40      0.40         5
+                 cnet       1.00      0.40      0.57         5
+                  cnn       0.33      0.20      0.25         5
+            condenast       0.60      0.60      0.60         5
+  creativecommons.org       0.60      0.60      0.60         5
+          dailymotion       1.00      1.00      1.00         5
+        digitaltrends       0.60      0.60      0.60         5
+              discord       0.17      0.20      0.18         5
+               disney       0.31      0.80      0.44         5
+  disneymovieinsiders       0.33      0.60      0.43         5
+           disneyplus       0.25      0.20      0.22         5
+          disneystore       0.67      0.40      0.50         5
+              doi.org       0.71      1.00      0.83         5
+                 drip       0.67      0.80      0.73         5
+                 dtmg       0.83      1.00      0.91         5
+            economist       0.00      0.00      0.00         5
+       economistgroup       0.43      0.60      0.50         5
+              eia.gov       0.83      1.00      0.91         5
+      encyclopediaapi       0.71      1.00      0.83         5
+              epa.gov       1.00      0.40      0.57         5
+                 espn       0.00      0.00      0.00         5
+             facebook       0.00      0.00      0.00         5
+          factmonster       0.27      0.60      0.38         5
+              factset       1.00      0.60      0.75         5
+      familyeducation       0.25      0.20      0.22         5
+          fastcompany       0.36      0.80      0.50         5
+               flickr       0.62      1.00      0.77         5
+            flipboard       0.50      0.40      0.44         5
+               forbes       1.00      0.20      0.33         5
+          foxbusiness       0.17      0.40      0.24         5
+              foxnews       1.00      0.40      0.57         5
+           foxweather       0.38      0.60      0.46         5
+         frax.finance       1.00      0.40      0.57         5
+               github       0.00      0.00      0.00         5
+              gizmodo       1.00      0.60      0.75         5
+                   go       0.00      0.00      0.00         5
+               google       0.71      1.00      0.83         5
+     googleadservices       0.67      0.80      0.73         5
+              govt.nz       0.67      0.80      0.73         5
+       huffingtonpost       0.25      0.20      0.22         5
+             huffpost       0.14      0.20      0.17         5
+          independent       0.43      0.60      0.50         5
+           infoplease       0.33      0.20      0.25         5
+            instagram       0.50      1.00      0.67         5
+              iq.wiki       0.00      0.00      0.00         5
+          israelhayom       1.00      0.40      0.57         5
+                jpost       0.33      0.40      0.36         5
+             linkedin       0.33      0.20      0.25         5
+                 mako       0.60      0.60      0.60         5
+               marvel       0.50      1.00      0.67         5
+      merriam-webster       0.33      0.20      0.25         5
+       moviesanywhere       0.60      0.60      0.60         5
+   nationalgeographic       0.33      0.20      0.25         5
+               nature       0.00      0.00      0.00         5
+              nbcnews       1.00      0.60      0.75         5
+                 ndtv       1.00      1.00      1.00         5
+             newsweek       0.50      0.20      0.29         5
+            newyorker       0.60      0.60      0.60         5
+                  npr       1.00      0.40      0.57         5
+              nytimes       0.80      0.80      0.80         5
+               odysee       0.75      0.60      0.67         5
+              outkick       0.29      0.40      0.33         5
+                pcmag       0.60      0.60      0.60         5
+            pinterest       0.67      0.40      0.50         5
+             politico       0.12      0.20      0.15         5
+               reddit       0.50      0.20      0.29         5
+            resources       0.44      0.80      0.57         5
+              revolut       0.44      0.80      0.57         5
+         scholarpedia       0.80      0.80      0.80         5
+                slate       0.25      0.20      0.22         5
+              spotify       0.29      0.40      0.33         5
+          squarespace       0.25      0.40      0.31         5
+                 ssrn       0.25      0.20      0.22         5
+             starwars       0.45      1.00      0.62         5
+             substack       0.50      0.60      0.55         5
+                 t.me       0.75      0.60      0.67         5
+        teachervision       0.67      0.80      0.73         5
+     technologyreview       0.50      0.80      0.62         5
+            techradar       0.00      0.00      0.00         5
+                  ted       0.75      0.60      0.67         5
+          theguardian       0.50      0.40      0.44         5
+ thewaltdisneycompany       0.50      0.40      0.44         5
+               tiktok       1.00      0.80      0.89         5
+         tomshardware       0.60      0.60      0.60         5
+               tubitv       0.67      0.80      0.73         5
+               twitch       0.25      0.20      0.22         5
+              twitter       0.00      0.00      0.00         5
+                upbit       1.00      0.20      0.33         5
+             usda.gov       0.71      1.00      0.83         5
+                 veoh       1.00      1.00      1.00         5
+                vimeo       1.00      1.00      1.00         5
+                   vk       0.67      0.80      0.73         5
+                  vox       0.00      0.00      0.00         5
+              vulture       0.20      0.20      0.20         5
+                walla       0.67      0.40      0.50         5
+        wikimedia.org       0.00      0.00      0.00         5
+        wikipedia.org       0.56      1.00      0.71         5
+                wired       0.60      0.60      0.60         5
+            wprdc.org       0.80      0.80      0.80         5
+                    x       0.67      0.40      0.50         5
+          ycombinator       0.75      0.60      0.67         5
+                 ynet       0.30      0.60      0.40         5
+        youradchoices       1.00      0.80      0.89         5
+
+             accuracy                           0.51       640
+            macro avg       0.52      0.51      0.49       640
+         weighted avg       0.52      0.51      0.49       640
+
+2025-12-24 17:42:47,019 - INFO - -> Saving model artifacts...
+2025-12-24 17:42:47,263 - INFO - [SUCCESS] Application model saved to models/
+2025-12-24 17:42:47,291 - INFO - ==================================================
+2025-12-24 17:42:47,291 - INFO - [RUN] GENERATING SUBMISSION FOR VALIDATION SET
+2025-12-24 17:42:47,291 - INFO - ==================================================
+2025-12-24 17:42:47,291 - INFO - -> Loading validation data from data/APP-1/radcom_app_val_without_labels.csv...
+2025-12-24 17:42:47,423 - INFO -    Validation samples: 30097
+2025-12-24 17:42:47,423 - INFO - -> Running inference...
+2025-12-24 17:42:49,831 - INFO - [SUCCESS] Submission saved to submission_app.csv
+2025-12-24 17:42:49,831 - INFO -    Total predictions: 30097

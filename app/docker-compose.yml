@@ -1,14 +1,14 @@
 version: '3.8'
 
 services:
-  # 1. The Broker (Redis) - מנהל את התור. זה הסוד לעמידה בעומסים.
+  # 1. The Broker (Redis) - manages the queue. Key for handling load.
   redis:
     image: redis:alpine
     container_name: radcom_redis
     ports:
       - "6379:6379"
 
-  # 2. The Brain (FastAPI) - מקבל בקשות ושולח לתור.
+  # 2. The Brain (FastAPI) - receives requests and sends them to the queue.
   backend:
     build: .
     container_name: radcom_backend
@@ -21,22 +21,22 @@ services:
     depends_on:
       - redis
 
-  # 3. The Muscle (Celery Worker) - עושה את העבודה הכבדה ברקע.
+  # 3. The Muscle (Celery Worker) - does the heavy background work.
   worker:
     build: .
     container_name: radcom_worker
-    # מריץ את ה-Worker עם רמת Log של Info
+    # run the Worker with log level INFO
     command: celery -A worker.celery_app worker --loglevel=info
     volumes:
       - .:/app
-      - ../models:/models  # חייב גישה למודלים כדי לטעון אותם
+      - ../models:/models  # needs access to models to load them
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
     depends_on:
       - redis
 
-  # 4. The Face (Streamlit) - הממשק למשתמש.
+  # 4. The Face (Streamlit) - the user interface.
   frontend:
     build: .
     container_name: radcom_frontend

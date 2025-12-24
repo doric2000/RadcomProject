@@ -3,22 +3,22 @@ import joblib
 from celery import Celery
 import os
 
-# הגדרת ה-Celery שידבר עם Redis
-# שים לב: הכתובת 'redis://redis:6379/0' מתאימה לשם השירות ב-docker-compose
+# Configure Celery to talk to Redis
+# Note: the URL 'redis://redis:6379/0' matches the service name in docker-compose
 celery_app = Celery('worker', broker='redis://redis:6379/0', backend='redis://redis:6379/0')
 
-# משתנים גלובליים לטעינת המודלים (כדי שלא נטען אותם בכל בקשה מחדש)
+# Global variables for model assets (to avoid reloading per request)
 models = {}
 
 def load_model_assets(task_type):
     """
-    טעינה חכמה: טוען את המודל, הסקיילר והעמודות רק אם הם לא בזיכרון.
-    task_type: 'app' או 'att'
+    Smart loading: load the model, scaler and columns only if not already in memory.
+    task_type: 'app' or 'att'
     """
     if task_type in models:
         return models[task_type]
     
-    base_path = "/models"  # הנתיב שמופה ב-docker-compose
+    base_path = "/models"  # the path mounted in docker-compose
     print(f"Loading {task_type} model assets from {base_path}...")
     
     try:
@@ -35,33 +35,33 @@ def load_model_assets(task_type):
 @celery_app.task(name="predict_process")
 def predict_process(data_json, task_type):
     """
-    זו הפונקציה שנקראת ע"י ה-Worker.
-    היא מקבלת את הדאטה (כ-JSON), מעבדת אותו ומחזירה תחזית.
+    This function is called by the Worker.
+    It receives the data (as JSON), processes it and returns predictions.
     """
-    # 1. המרת ה-JSON חזרה ל-DataFrame
+    # 1. Convert JSON back to a DataFrame
     df = pd.DataFrame(data_json)
     
-    # 2. טעינת המודלים הרלוונטיים
+    # 2. Load relevant models
     clf, scaler, model_columns = load_model_assets(task_type)
     
-    # 3. ניקוי (אותו תהליך כמו באימון)
+    # 3. Cleaning (same process as training)
     drop_cols = ['Source_IP', 'Source_port', 'Destination_IP', 'Destination_port', 'Timestamp']
-    # מורידים רק מה שקיים
+    # drop only columns that exist
     existing_drop_cols = [c for c in drop_cols if c in df.columns]
     X = df.drop(columns=existing_drop_cols)
     
-    # 4. טיפול בקטגוריות (One Hot Encoding)
+    # 4. Handle categorical features (One-Hot Encoding)
     X = pd.get_dummies(X)
     
-    # --- הצעד הקריטי: יישור עמודות ---
-    # מוודאים שיש לנו בדיוק את אותן עמודות כמו באימון
+    # --- Critical step: align columns ---
+    # ensure we have exactly the same columns as in training
     X = X.reindex(columns=model_columns, fill_value=0)
     
-    # 5. נרמול
+    # 5. Scaling
     X_scaled = scaler.transform(X)
     
-    # 6. חיזוי
+    # 6. Prediction
     predictions = clf.predict(X_scaled)
     
-    # מחזירים את התוצאה כרשימה (כדי שיהיה אפשר להעביר ב-JSON)
+    # return result as a list (so it can be JSON serializable)
     return predictions.tolist()

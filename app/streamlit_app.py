@@ -4,34 +4,34 @@ import requests
 import time
 import io
 
-# כתובת השרת (מוגדרת ב-docker-compose)
+# Backend API URL (defined in docker-compose)
 API_URL = "http://backend:8000"
 
 st.set_page_config(page_title="REDCOM Cyber Classifier", layout="wide")
 
-st.title("🛡️ REDCOM Competition")
+st.title("[SECURITY] REDCOM Competition")
 st.markdown("### Powered by Machine Learning & Docker Microservices")
 
-# 1. בחירת סוג המשימה
+# 1. Select task type
 task_type = st.selectbox("Select Challenge:", ["att", "app"])
 
-# 2. העלאת קובץ
+# 2. Upload file
 uploaded_file = st.file_uploader("Upload Validation CSV", type=["csv"])
 
 if uploaded_file is not None:
-    # קריאת הקובץ לתצוגה
+    # Read file for preview
     df = pd.read_csv(uploaded_file)
     st.write("Preview of uploaded data:", df.head())
     
-    if st.button("🚀 Run Prediction"):
-        # הכנת הקובץ לשליחה
-        # אנחנו צריכים לאפס את המצביע של הקובץ להתחלה
+    if st.button("[RUN] Run Prediction"):
+        # Prepare the file to send
+        # Reset file pointer to the start
         uploaded_file.seek(0)
         files = {"file": uploaded_file.getvalue()}
         
         with st.spinner(f'Sending data to Worker Queue ({task_type})...'):
             try:
-                # א. שליחת הבקשה לשרת
+                # A. Send request to backend
                 response = requests.post(
                     f"{API_URL}/predict/{task_type}", 
                     files={"file": uploaded_file}
@@ -41,7 +41,7 @@ if uploaded_file is not None:
                     task_id = response.json()["task_id"]
                     st.success(f"Task submitted! ID: {task_id}")
                     
-                    # ב. Polling - בדיקה חוזרת האם המשימה הסתיימה
+                    # B. Polling - check if task finished
                     status_placeholder = st.empty()
                     while True:
                         result_response = requests.get(f"{API_URL}/result/{task_id}")
@@ -51,17 +51,17 @@ if uploaded_file is not None:
                         if status == "SUCCESS":
                             status_placeholder.success("Processing Complete!")
                             
-                            # קבלת התחזיות
+                            # Receive predictions
                             predictions = result_data["result"]
                             
-                            # הוספת התחזית לדאטה המקורי
-                            # (הערה: אם הסדר נשמר - ו-Celery שומר סדר - זה תקין)
+                            # Add predictions to original dataframe
+                            # (Note: if order preserved — Celery keeps order — this is fine)
                             df['prediction'] = predictions
                             
                             st.write("### Results Preview")
                             st.dataframe(df[['prediction']].head())
                             
-                            # ג. הורדת הקובץ המוכן
+                            # C. Download the results file
                             csv = df.to_csv(index=False).encode('utf-8')
                             st.download_button(
                                 label="Download Results CSV",
@@ -78,7 +78,7 @@ if uploaded_file is not None:
                         
                         else:
                             status_placeholder.info(f"Status: {status}... Waiting for worker...")
-                            time.sleep(2) # מחכים 2 שניות לפני בדיקה נוספת
+                            time.sleep(2) # wait 2 seconds before next check
                             
                 else:
                     st.error(f"Error submitting task: {response.text}")

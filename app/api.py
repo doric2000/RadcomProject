@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 from celery.result import AsyncResult
-from worker import celery_app  # <--- שים לב: אנחנו מייבאים רק את האפליקציה, לא את המשימה!
+from worker import celery_app
 import pandas as pd
 import io
 
@@ -8,15 +8,15 @@ app = FastAPI()
 
 @app.post("/predict/{task_type}")
 async def predict_endpoint(task_type: str, file: UploadFile = File(...)):
-    # 1. קריאת הקובץ
+    # 1. Read the file
     content = await file.read()
     df = pd.read_csv(io.BytesIO(content))
     
-    # 2. המרה ל-JSON
+    # 2. Convert to JSON
     data_json = df.to_dict(orient='records')
     
-    # 3. שליחה לתור (לפי שם המשימה במרכאות)
-    # זה התיקון הגדול! במקום לקרוא לפונקציה, אנחנו שולחים הודעה לתור
+    # 3. Send to queue (task name as string)
+    # This is the big fix: instead of calling the function, we send a message to the queue
     task = celery_app.send_task('predict_process', args=[data_json, task_type])
     
     return {"task_id": task.id}

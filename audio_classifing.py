@@ -8,6 +8,12 @@ le = joblib.load('models/att_label_encoder.pkl')
 features = joblib.load('models/att_columns.pkl')
 test = pd.read_csv('data/attribution/radcom_att_test.csv')
 
+import logging
+from log_setup import configure_logging
+
+configure_logging()
+logger = logging.getLogger(__name__)
+
 # שחזור הפיצ'רים (אותה לוגיקה כמו ב-Sniper)
 def get_features(df):
     df['is_udp'] = df['Protocol'].apply(lambda x: 1 if str(x).lower() == 'udp' else 0)
@@ -43,11 +49,11 @@ preds = model.predict(X_test)
 preds_label = le.inverse_transform(preds)
 
 # מציאת הטעויות ב-Audio
-print("\n🕵️‍♂️ AUDIO FAILURE ANALYSIS:\n")
+logger.info("\n[ANALYSIS] AUDIO FAILURE ANALYSIS:\n")
 for i in range(len(y_true)):
     if y_true.iloc[i] == 'real_time_audio' and preds_label[i] != 'real_time_audio':
-        print(f"❌ Mistake #{i}: Real is Audio -> Predicted as {preds_label[i]}")
-        print(f"   - Max Size: {test_eng.iloc[i]['max_size']} (Video usually > 1000)")
-        print(f"   - Bytes Ratio (Down/Up): {test_eng.iloc[i]['bytes_ratio']:.2f} (Audio ~1.0, Video >> 1.0)")
-        print(f"   - Protocol: {test.iloc[i]['Protocol']}")
-        print("-" * 40)
+        logger.error(f"[ERROR] Mistake #{i}: Real is Audio -> Predicted as {preds_label[i]}")
+        logger.info(f"   - Max Size: {test_eng.iloc[i]['max_size']} (Video usually > 1000)")
+        logger.info(f"   - Bytes Ratio (Down/Up): {test_eng.iloc[i]['bytes_ratio']:.2f} (Audio ~1.0, Video >> 1.0)")
+        logger.info(f"   - Protocol: {test.iloc[i]['Protocol']}")
+        logger.info("-" * 40)
