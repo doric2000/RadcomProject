@@ -5,3 +5,4 @@ models/
 *.joblib
 *.pkl
 *.log
+AGENTS.md

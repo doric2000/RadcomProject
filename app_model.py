@@ -335,9 +335,9 @@ def predict_app(df: pd.DataFrame, model=None, le=None, features=None):
     return le.inverse_transform(preds)
 
 
-def generate_submission():
+def generate_submission(output_path: str = PATHS.submission):
     logger.info("=" * 50)
-    logger.info("[RUN] GENERATING SUBMISSION FOR VALIDATION SET (NO FILE OUTPUT)")
+    logger.info("[RUN] GENERATING SUBMISSION FOR VALIDATION SET")
     logger.info("=" * 50)
 
     logger.info(f"-> Loading validation data from {PATHS.val}...")
@@ -348,10 +348,12 @@ def generate_submission():
     predictions = predict_app(val_df)
 
     submission = pd.DataFrame({"prediction": predictions})
-    logger.info(f"-> Generated predictions. Total: {len(submission)}")
+    submission.to_csv(output_path, index=False)
+    logger.info(f"[SUCCESS] Submission saved to {output_path}")
+    logger.info(f"   Total predictions: {len(submission)}")
     return submission
 
 
 if __name__ == "__main__":
     train_app_model()
-    generate_submission()
+    generate_submission(PATHS.submission)
