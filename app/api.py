@@ -1,10 +1,32 @@
+
 from fastapi import FastAPI, UploadFile, File
 from celery.result import AsyncResult
 from worker import celery_app
 import pandas as pd
 import io
+from prometheus_fastapi_instrumentator import Instrumentator
+import os
+
 
 app = FastAPI()
+
+# Add Prometheus metrics
+Instrumentator().instrument(app).expose(app)
+@app.get("/health")
+async def health_check():
+    # Check if model files exist for both 'app' and 'att' models
+    base_path = "/models"
+    required_files = [
+        f"{base_path}/app_model.pkl",
+        f"{base_path}/app_scaler.pkl",
+        f"{base_path}/app_columns.pkl",
+        f"{base_path}/att_model.pkl",
+        f"{base_path}/att_scaler.pkl",
+        f"{base_path}/att_columns.pkl",
+    ]
+    all_exist = all(os.path.exists(f) for f in required_files)
+    status = "ok" if all_exist else "missing model files"
+    return {"status": status}
 
 @app.post("/predict/{task_type}")
 async def predict_endpoint(task_type: str, file: UploadFile = File(...)):

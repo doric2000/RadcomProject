@@ -1,0 +1,7 @@
+# Prometheus configuration for scraping FastAPI metrics
+
+scrape_configs:
+  - job_name: 'fastapi'
+    metrics_path: /metrics
+    static_configs:
+      - targets: ['backend:8000']

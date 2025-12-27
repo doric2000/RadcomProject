@@ -2,7 +2,10 @@ import logging
 import sys
 from pathlib import Path
 
-LOG_FILE = Path("run.log")
+import os
+
+# Use /app/logs/app.log inside the container for persistent logging
+LOG_FILE = Path(os.environ.get("LOG_FILE", "/app/logs/app.log"))
 
 
 def configure_logging(level=logging.INFO):
