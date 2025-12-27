@@ -6,3 +6,4 @@ models/
 *.pkl
 *.log
 AGENTS.md
+result/

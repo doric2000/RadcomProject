@@ -17,6 +17,14 @@ from log_setup import configure_logging
 configure_logging()
 logger = logging.getLogger(__name__)
 
+# Paths configuration
+TRAIN_PATH = "data/attribution/radcom_att_train.csv"
+TEST_PATH = "data/attribution/radcom_att_test.csv"
+VAL_PATH = "data/attribution/radcom__att_val_without_labels.csv"
+MODEL_DIR = "models"
+RESULT_DIR = "result"
+SUBMISSION_FILE = "submission_att.csv"
+
 
 def extract_isolation_features(df, q_large=0.90, n_packets=20):
     """
@@ -119,10 +127,64 @@ def extract_isolation_features(df, q_large=0.90, n_packets=20):
     return df
 
 
+def predict_att(df, model=None, scaler=None, le=None, features=None):
+    """Make predictions on new data using trained attribution model."""
+    if model is None:
+        model = joblib.load(os.path.join(MODEL_DIR, "att_model.pkl"))
+        scaler = joblib.load(os.path.join(MODEL_DIR, "att_scaler.pkl"))
+        le = joblib.load(os.path.join(MODEL_DIR, "att_label_encoder.pkl"))
+        features = joblib.load(os.path.join(MODEL_DIR, "att_columns.pkl"))
+    
+    # Apply same feature engineering
+    df_eng = extract_isolation_features(df, q_large=0.90, n_packets=20)
+    
+    # Select same features and fill missing
+    X = df_eng[features].fillna(0.0)
+    X = X.reindex(columns=features, fill_value=0.0)
+    
+    # Scale and predict
+    X_scaled = scaler.transform(X)
+    preds = model.predict(X_scaled)
+    
+    # Convert back to original labels
+    return le.inverse_transform(preds)
+
+
+def generate_att_submission(output_dir=RESULT_DIR, output_file=SUBMISSION_FILE):
+    """Generate predictions for validation set and save to result directory."""
+    logger.info("=" * 50)
+    logger.info("[RUN] GENERATING ATTRIBUTION SUBMISSION FOR VALIDATION SET")
+    logger.info("=" * 50)
+    
+    logger.info(f"-> Loading validation data from {VAL_PATH}...")
+    val_df = pd.read_csv(VAL_PATH)
+    logger.info(f"   Validation samples: {len(val_df)}")
+    
+    logger.info("-> Running inference...")
+    predictions = predict_att(val_df)
+    
+    # Create result directory
+    os.makedirs(output_dir, exist_ok=True)
+    
+    # Add predictions to original dataframe
+    submission = val_df.copy()
+    submission["prediction"] = predictions
+    
+    output_path = os.path.join(output_dir, output_file)
+    submission.to_csv(output_path, index=False)
+    
+    logger.info(f"[SUCCESS] Attribution submission saved to {output_path}")
+    logger.info(f"   Total predictions: {len(submission)}")
+    logger.info(f"   Original columns + prediction column: {len(submission.columns)}")
+    logger.info(f"   Unique predictions: {submission['prediction'].nunique()}")
+    
+    return submission
+
+
 def train_att_isolation():
     logger.info("-> Loading data...")
-    train = pd.read_csv("data/attribution/radcom_att_train.csv")
-    test = pd.read_csv("data/attribution/radcom_att_test.csv")
+    train = pd.read_csv(TRAIN_PATH)
+    test = pd.read_csv(TEST_PATH)
 
     logger.info("-> Extracting features (your winning logic)...")
     train_eng = extract_isolation_features(train, q_large=0.90, n_packets=20)
@@ -181,13 +243,16 @@ def train_att_isolation():
     logger.info('\n' + classification_report(y_test_enc, preds, target_names=le.classes_))
 
     # Save assets
-    os.makedirs("models", exist_ok=True)
-    joblib.dump(ensemble, "models/att_model.pkl")
-    joblib.dump(scaler, "models/att_scaler.pkl")
-    joblib.dump(le, "models/att_label_encoder.pkl")
-    joblib.dump(features, "models/att_columns.pkl")
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    joblib.dump(ensemble, os.path.join(MODEL_DIR, "att_model.pkl"))
+    joblib.dump(scaler, os.path.join(MODEL_DIR, "att_scaler.pkl"))
+    joblib.dump(le, os.path.join(MODEL_DIR, "att_label_encoder.pkl"))
+    joblib.dump(features, os.path.join(MODEL_DIR, "att_columns.pkl"))
     logger.info("[SUCCESS] Assets saved.")
+    
+    return ensemble, scaler, le, features
 
 
 if __name__ == "__main__":
     train_att_isolation()
+    generate_att_submission()

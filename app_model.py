@@ -1,11 +1,3 @@
-"""APP-1 application classifier with richer feature set and stronger ensemble.
-
-Rules:
-- Train ONLY on: data/APP-1/radcom_app_train.csv
-- Test  ONLY on: data/APP-1/radcom_app_test.csv
-- Predict on     data/APP-1/radcom_app_val_without_labels.csv (submission)
-"""
-
 from __future__ import annotations
 
 import logging
@@ -43,7 +35,8 @@ class Paths:
     test: str = "data/APP-1/radcom_app_test.csv"
     val: str = "data/APP-1/radcom_app_val_without_labels.csv"
     model_dir: str = "models"
-    submission: str = "submission_app.csv"
+    result_dir: str = "result"
+    submission: str = "result/submission_app.csv"
 
 
 PATHS = Paths()
@@ -347,10 +340,17 @@ def generate_submission(output_path: str = PATHS.submission):
     logger.info("-> Running inference...")
     predictions = predict_app(val_df)
 
-    submission = pd.DataFrame({"prediction": predictions})
+    # Create result directory
+    os.makedirs(PATHS.result_dir, exist_ok=True)
+    
+    # Add predictions to original dataframe
+    submission = val_df.copy()
+    submission["prediction"] = predictions
+    
     submission.to_csv(output_path, index=False)
     logger.info(f"[SUCCESS] Submission saved to {output_path}")
     logger.info(f"   Total predictions: {len(submission)}")
+    logger.info(f"   Original columns + prediction column: {len(submission.columns)}")
     return submission
 
 
