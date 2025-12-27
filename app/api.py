@@ -18,7 +18,6 @@ async def health_check():
     base_path = "/models"
     required_files = [
         f"{base_path}/app_model.pkl",
-        f"{base_path}/app_scaler.pkl",
         f"{base_path}/app_columns.pkl",
         f"{base_path}/att_model.pkl",
         f"{base_path}/att_scaler.pkl",

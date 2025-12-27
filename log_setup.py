@@ -4,8 +4,19 @@ from pathlib import Path
 
 import os
 
-# Use /app/logs/app.log inside the container for persistent logging
-LOG_FILE = Path(os.environ.get("LOG_FILE", "/app/logs/app.log"))
+# Determine if running in Docker (by checking for /.dockerenv or DOCKER env var)
+def is_docker():
+    return os.path.exists('/.dockerenv') or os.environ.get('DOCKER', '').lower() == 'true'
+
+if is_docker():
+    log_path = os.environ.get("LOG_FILE", "/app/logs/app.log")
+else:
+    log_path = os.environ.get("LOG_FILE", "logs/app.log")
+
+LOG_FILE = Path(log_path)
+
+# Ensure the parent directory exists
+LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 
 def configure_logging(level=logging.INFO):

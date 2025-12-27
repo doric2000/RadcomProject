@@ -58,8 +58,8 @@ if uploaded_file is not None:
                             # (Note: if order preserved — Celery keeps order — this is fine)
                             df['prediction'] = predictions
                             
-                            st.write("### Results Preview")
-                            st.dataframe(df[['prediction']].head())
+                            st.write("### Results Table")
+                            st.dataframe(df)
                             
                             # C. Download the results file
                             csv = df.to_csv(index=False).encode('utf-8')
