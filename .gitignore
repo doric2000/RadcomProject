@@ -8,3 +8,5 @@ models/
 AGENTS.md
 result/
 data/
+
+__pycache__
