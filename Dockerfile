@@ -11,8 +11,11 @@ RUN apt-get update && apt-get install -y build-essential
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the code
-COPY . .
+# Copy the application code
+COPY app/ ./app/
+COPY log_setup.py .
+COPY app_model.py .
+COPY att_model.py .
 
 # Expose ports (for documentation; Compose sets them)
 EXPOSE 8000 8501

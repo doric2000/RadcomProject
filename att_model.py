@@ -23,7 +23,7 @@ TEST_PATH = "data/attribution/radcom_att_test.csv"
 VAL_PATH = "data/attribution/radcom__att_val_without_labels.csv"
 MODEL_DIR = "models"
 RESULT_DIR = "result"
-SUBMISSION_FILE = "submission_att.csv"
+SUBMISSION_FILE = "att_validation_results.csv"
 
 
 def extract_isolation_features(df, q_large=0.90, n_packets=20):

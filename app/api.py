@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 from celery.result import AsyncResult
-from worker import celery_app
+from app.worker import celery_app
 import pandas as pd
 import io
 

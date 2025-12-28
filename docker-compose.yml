@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # 1. The Broker (Redis) - manages the queue. Key for handling load.
   redis:
@@ -12,10 +10,10 @@ services:
   backend:
     build: .
     container_name: radcom_backend
-    command: uvicorn api:app --host 0.0.0.0 --port 8000
+    command: uvicorn app.api:app --host 0.0.0.0 --port 8000
     volumes:
-      - .:/app
-      - ../models:/models
+      - ./app:/app/app
+      - ./models:/models
     ports:
       - "8000:8000"
     depends_on:
@@ -25,11 +23,10 @@ services:
   worker:
     build: .
     container_name: radcom_worker
-    # run the Worker with log level INFO
-    command: celery -A worker.celery_app worker --loglevel=info
+    command: celery -A app.worker.celery_app worker --loglevel=info
     volumes:
-      - .:/app
-      - ../models:/models  # needs access to models to load them
+      - ./app:/app/app
+      - ./models:/models
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
@@ -40,9 +37,9 @@ services:
   frontend:
     build: .
     container_name: radcom_frontend
-    command: streamlit run streamlit_app.py
+    command: streamlit run app/streamlit_app.py
     volumes:
-      - .:/app
+      - ./app:/app/app
     ports:
       - "8501:8501"
     environment:

@@ -110,7 +110,6 @@ python plots.py
 The project includes Docker configuration for containerized deployment:
 
 ```bash
-cd app
 docker-compose up --build
 ```
 

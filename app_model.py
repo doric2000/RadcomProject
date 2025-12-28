@@ -36,7 +36,7 @@ class Paths:
     val: str = "data/APP-1/radcom_app_val_without_labels.csv"
     model_dir: str = "models"
     result_dir: str = "result"
-    submission: str = "result/submission_app.csv"
+    submission: str = "result/app_validation_results.csv"
 
 
 PATHS = Paths()
