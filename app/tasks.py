@@ -55,6 +55,7 @@ def predict_process(data_json, task_type):
     4. Decode Labels
     """
     # 1. Convert JSON back to DataFrame
+    print(f"--- [WORKER] RECEIVED PREDICTION REQUEST. MODEL TYPE: {task_type.upper()} ---")
     df = pd.DataFrame(data_json)
     
     # 2. Load assets

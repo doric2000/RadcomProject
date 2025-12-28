@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 TRAIN_PATH = "data/attribution/radcom_att_train.csv"
 TEST_PATH = "data/attribution/radcom_att_test.csv"
 VAL_PATH = "data/attribution/radcom__att_val_without_labels.csv"
-MODEL_DIR = "models"
+MODEL_DIR = os.environ.get("MODEL_DIR", "models")
 RESULT_DIR = "result"
 SUBMISSION_FILE = "att_validation_results.csv"
 

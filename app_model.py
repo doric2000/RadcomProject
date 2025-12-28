@@ -34,7 +34,7 @@ class Paths:
     train: str = "data/APP-1/radcom_app_train.csv"
     test: str = "data/APP-1/radcom_app_test.csv"
     val: str = "data/APP-1/radcom_app_val_without_labels.csv"
-    model_dir: str = "models"
+    model_dir: str = os.environ.get("MODEL_DIR", "models")
     result_dir: str = "result"
     submission: str = "result/app_validation_results.csv"
 

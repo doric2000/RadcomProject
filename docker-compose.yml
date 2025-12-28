@@ -1,12 +1,26 @@
 services:
-  # 1. The Broker (Redis) - manages the queue. Key for handling load.
+  # 0. Init Container - Trains models before starting services
+  init_models:
+    build: .
+    container_name: radcom_init_models
+    command: >
+      sh -c "echo 'Training App Model...' && python app_model.py && 
+             echo 'Training Att Model...' && python att_model.py &&
+             echo 'Training Complete. Models saved to /models.'"
+    volumes:
+      - ./models:/models
+      - ./data:/app/data
+    environment:
+      - MODEL_DIR=/models
+
+  # 1. The Broker (Redis)
   redis:
     image: redis:alpine
     container_name: radcom_redis
     ports:
       - "6379:6379"
 
-  # 2. The Brain (FastAPI) - receives requests and sends them to the queue.
+  # 2. The Brain (FastAPI)
   backend:
     build: .
     container_name: radcom_backend
@@ -14,12 +28,17 @@ services:
     volumes:
       - ./app:/app/app
       - ./models:/models
+    environment:
+      - MODEL_DIR=/models
     ports:
       - "8000:8000"
     depends_on:
-      - redis
+      redis:
+        condition: service_started
+      init_models:
+        condition: service_completed_successfully
 
-  # 3. The Muscle (Celery Worker) - does the heavy background work.
+  # 3. The Muscle (Celery Worker)
   worker:
     build: .
     container_name: radcom_worker
@@ -30,10 +49,14 @@ services:
     environment:
       - CELERY_BROKER_URL=redis://redis:6379/0
       - CELERY_RESULT_BACKEND=redis://redis:6379/0
+      - MODEL_DIR=/models
     depends_on:
-      - redis
+      redis:
+        condition: service_started
+      init_models:
+        condition: service_completed_successfully
 
-  # 4. The Face (Streamlit) - the user interface.
+  # 4. The Face (Streamlit)
   frontend:
     build: .
     container_name: radcom_frontend
