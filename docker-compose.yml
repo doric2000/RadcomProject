@@ -1,17 +1,17 @@
 services:
   # 0. Init Container - Trains models before starting services
-  init_models:
-    build: .
-    container_name: radcom_init_models
-    command: >
-      sh -c "echo 'Training App Model...' && python app_model.py && 
-             echo 'Training Att Model...' && python att_model.py &&
-             echo 'Training Complete. Models saved to /models.'"
-    volumes:
-      - ./models:/models
-      - ./data:/app/data
-    environment:
-      - MODEL_DIR=/models
+  #init_models:
+  #  build: .
+  #  container_name: radcom_init_models
+  #  command: >
+  #    sh -c "echo 'Training App Model...' && python app_model.py && 
+  #           echo 'Training Att Model...' && python att_model.py &&
+  #           echo 'Training Complete. Models saved to /models.'"
+  #  volumes:
+  #    - ./models:/models
+  #    - ./data:/app/data
+  #  environment:
+  #    - MODEL_DIR=/models
 
   # 1. The Broker (Redis)
   redis:
@@ -35,8 +35,7 @@ services:
     depends_on:
       redis:
         condition: service_started
-      init_models:
-        condition: service_completed_successfully
+
 
   # 3. The Muscle (Celery Worker)
   worker:
@@ -53,8 +52,7 @@ services:
     depends_on:
       redis:
         condition: service_started
-      init_models:
-        condition: service_completed_successfully
+
 
   # 4. The Face (Streamlit)
   frontend:
