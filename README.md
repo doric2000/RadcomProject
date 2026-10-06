@@ -1,129 +1,61 @@
 # RADCOM Cyber Classifier
 
-A machine learning project for network traffic classification using two distinct models: Application Classification and Attribution Classification.
+**Network-traffic classification with an asynchronous inference API and a browser interface.**
 
-## Project Overview
+Co-built by **Dor Cohen and Baruh Ifraimov**, as credited in the application. The project combines application/attribution feature engineering and ensemble models with an independently queued prediction service.
 
-This project provides tools to train and deploy machine learning models that classify network traffic data. It includes a complete pipeline from data processing, model training, evaluation, and a deployable web application with Docker support.
+![CSV upload flows through Redis, Celery inference, and result polling](docs/architecture.svg)
 
-## Components
+## What the system does
 
-### Machine Learning Models
+1. A user uploads CSV traffic data from Streamlit or the FastAPI endpoint.
+2. `POST /predict/{task_type}` creates a Celery job and returns its `task_id`.
+3. A worker builds features, aligns/scales inputs against fitted artifacts, and runs the selected model.
+4. `GET /result/{task_id}` reports status and returns predictions when ready; the UI exports them as CSV.
 
-#### app_model.py
-The Application Classification model. This module:
-- Loads training data from `data/APP-1/` directory
-- Performs feature engineering including spectral analysis, inter-arrival features, flag densities, and balance features
-- Trains an ensemble model using Random Forest, Gradient Boosting, and XGBoost as base classifiers with a Voting Classifier
-- Saves trained model artifacts to the `models/` directory
-- Generates submission predictions for validation data
+**Stack:** Python · FastAPI · Celery · Redis · Streamlit · pandas · scikit-learn · XGBoost · Docker.
 
-To train and generate predictions:
+## Engineering to inspect
+
+| Component | Evidence |
+| --- | --- |
+| API and task boundary | [app/api.py](app/api.py) |
+| Inference, feature alignment, and artifact caching | [app/tasks.py](app/tasks.py) |
+| Application-classification features and ensemble | [app_model.py](app_model.py) |
+| Attribution-classification features and ensemble | [att_model.py](att_model.py) |
+| Browser upload and results | [app/streamlit_app.py](app/streamlit_app.py) |
+| Service orchestration | [docker-compose.yml](docker-compose.yml) |
+
+My contribution spans the collaborative ML pipeline and application/service integration. This portfolio does not claim sole authorship of the shared models or a measured production deployment.
+
+## Setup and artifact requirements
+
+**Training data and fitted models are excluded from Git.** You need authorized input data in `data/APP-1/` and `data/attribution/`, then model artifacts in `models/`. The detailed [training guide](docs/TRAINING.md) explains the two pipelines and plot generation.
+
 ```bash
-python app_model.py
-```
-
-#### att_model.py
-The Attribution Classification model. This module:
-- Loads training data from `data/attribution/` directory
-- Extracts isolation-based features including large packet detection, neighbor isolation, directionality analysis, and burst signals
-- Trains an ensemble model using Random Forest and KNN with a Voting Classifier
-- Saves trained model artifacts to the `models/` directory
-- Generates submission predictions for validation data
-
-To train and generate predictions:
-```bash
-python att_model.py
-```
-
-### Visualization
-
-#### plots.py
-Generates evaluation plots and visualizations for both models. This module:
-- Creates confusion matrices for model performance evaluation
-- Plots feature importance charts for tree-based models
-- Generates protocol distribution and correlation heatmaps
-- Saves all plots to `result/plots/` directory
-
-To generate all plots:
-```bash
-python plots.py
-```
-
-### Utilities
-
-#### log_setup.py
-Configures logging for the project. Outputs logs to both stdout and a rotating log file (`run.log`).
-
-### Web Application (app/ directory)
-
-#### app/streamlit_app.py
-The frontend web interface built with Streamlit. Allows users to:
-- Select classification task type (app or att)
-- Upload CSV validation files
-- View data previews
-- Run predictions and download results
-
-#### app/api.py
-FastAPI backend that:
-- Receives prediction requests from the frontend
-- Sends tasks to the Celery worker queue
-- Returns prediction results to the frontend
-
-#### app/tasks.py
-Celery task definitions for asynchronous prediction processing. Loads trained models and processes prediction requests from the queue.
-
-#### app/worker.py
-Celery worker configuration for processing tasks from Redis queue.
-
-## Data Structure
-
-- `data/APP-1/` - Training, test, and validation data for Application Classification
-- `data/attribution/` - Training, test, and validation data for Attribution Classification
-
-## Running the Project
-
-### Local Training
-
-1. Install dependencies:
-```bash
+python -m venv .venv
+# Activate your virtual environment, then:
 pip install -r requirements.txt
-```
-
-2. Train the Application model:
-```bash
+# After supplying the expected training data:
 python app_model.py
-```
-
-3. Train the Attribution model:
-```bash
 python att_model.py
+docker compose up --build
 ```
 
-4. Generate evaluation plots:
-```bash
-python plots.py
-```
+Open `http://localhost:8501` for Streamlit or `http://localhost:8000/docs` for the API. The worker loads artifacts from the mounted `/models` directory, including `{app,att}_model.pkl` and optional scaler, label-encoder, and feature-column files. A source-only clone cannot complete predictions without those artifacts.
 
-### Docker Deployment
-
-The project includes Docker configuration for containerized deployment:
+Example API workflow with your own compatible CSV:
 
 ```bash
-docker-compose up --build
+curl -F "file=@traffic.csv" http://localhost:8000/predict/app
+curl http://localhost:8000/result/YOUR_TASK_ID
 ```
 
-This starts:
-- Redis for task queue
-- FastAPI backend for API endpoints
-- Celery worker for ML predictions
-- Streamlit frontend for user interface
+## Limits and evaluation
 
-Access the web interface at `http://localhost:8501` after deployment.
+- This is a project service, with no public multi-user authentication, upload-size policy, or rate limiting. Keep it in an isolated development environment.
+- Task IDs and polling decouple request handling from model processing; they do not guarantee throughput or exactly-once execution.
+- Accuracy depends on the dataset, split, feature processing, and fitted artifacts. No unsupported accuracy or benchmark figure is published here.
+- Prediction/data artifacts and logs remain private. Load only model files from a trusted source; serialized Python model artifacts are executable trust inputs.
 
-## Output Files
-
-- `models/` - Trained model files (.pkl)
-- `result/` - Submission CSV files with predictions
-- `result/plots/` - Evaluation visualizations
-- `run.log` - Execution logs
+[Training and original project detail](docs/TRAINING.md)
